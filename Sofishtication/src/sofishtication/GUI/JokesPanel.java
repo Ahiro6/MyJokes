@@ -4,17 +4,20 @@
  */
 package sofishtication.GUI;
 
+import java.awt.CardLayout;
+import java.awt.Component;
+import java.awt.Container;
+import sofishtication.apiConnector.ApiRequester;
+
 /**
  *
  * @author user-pc
  */
 public class JokesPanel extends javax.swing.JPanel {
-
-    /**
-     * Creates new form JokesPanel
-     */
+    
     public JokesPanel() {
         initComponents();
+        
     }
 
     /**
@@ -26,19 +29,40 @@ public class JokesPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        feedPanel1 = new sofishtication.GUI.FeedPanel();
+        jokeCard1 = new sofishtication.GUI.JokeCard();
+
+        setLayout(new java.awt.CardLayout());
+
+        feedPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                feedPanel1MousePressed(evt);
+            }
+        });
+        add(feedPanel1, "feed");
+        add(jokeCard1, "card");
     }// </editor-fold>//GEN-END:initComponents
 
+    private void feedPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_feedPanel1MousePressed
+
+    }//GEN-LAST:event_feedPanel1MousePressed
+    private void setCard(String card) {
+        CardLayout cardLayout = (CardLayout) this.getLayout();
+        cardLayout.show(this, card);
+    }
+    
+    public void openProfile(ApiRequester apiReq) {
+        jokeCard1.setApiReq(apiReq);
+        setCard("card");
+    }
+    
+    public void closeProfile() {
+        jokeCard1.setApiReq(null);
+        setCard("feed");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private sofishtication.GUI.FeedPanel feedPanel1;
+    private sofishtication.GUI.JokeCard jokeCard1;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,4 +1,4 @@
-w/*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -7,17 +7,17 @@ package sofishtication.GUI;
 import javax.swing.BoxLayout;
 import sofishtication.apiConnector.ApiRequester;
 
+import sofishtication.apiConnector.ApiRequester;
+
 /**
  *
  * @author user-pc
  */
 public class MainGui extends javax.swing.JFrame {
 
-    static MainGui mainGui;
     
     public MainGui() {
         initComponents();
-        dadJokes();
     }
 
     /**
@@ -29,48 +29,71 @@ public class MainGui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Navbar = new javax.swing.JTabbedPane();
+        jokesPanel1 = new sofishtication.GUI.JokesPanel();
+        myJokesPanel1 = new sofishtication.GUI.MyJokesPanel();
+        profile1 = new sofishtication.GUI.Profile();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        Navbar.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                NavbarStateChanged(evt);
+            }
+        });
+        Navbar.addTab("Home", jokesPanel1);
+
+        javax.swing.GroupLayout myJokesPanel1Layout = new javax.swing.GroupLayout(myJokesPanel1);
+        myJokesPanel1.setLayout(myJokesPanel1Layout);
+        myJokesPanel1Layout.setHorizontalGroup(
+            myJokesPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 437, Short.MAX_VALUE)
+        );
+        myJokesPanel1Layout.setVerticalGroup(
+            myJokesPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 309, Short.MAX_VALUE)
+        );
+
+        Navbar.addTab("MyJokes", myJokesPanel1);
+
+        javax.swing.GroupLayout profile1Layout = new javax.swing.GroupLayout(profile1);
+        profile1.setLayout(profile1Layout);
+        profile1Layout.setHorizontalGroup(
+            profile1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 437, Short.MAX_VALUE)
+        );
+        profile1Layout.setVerticalGroup(
+            profile1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 309, Short.MAX_VALUE)
+        );
+
+        Navbar.addTab("Profile", profile1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 437, Short.MAX_VALUE)
+            .addComponent(Navbar, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 340, Short.MAX_VALUE)
+            .addComponent(Navbar)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void NavbarStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_NavbarStateChanged
+        if(Navbar.getSelectedIndex() == 0) {
+            //FeedPanel feed = (FeedPanel) 
+        }
+        
+      
+    }//GEN-LAST:event_NavbarStateChanged
+
     /**
      * @param args the command line arguments
      */
-    public void startup() {
-        System.out.println("Hi");
-        
-        ApiRequester apiReq = new ApiRequester("https://dad-jokes.p.rapidapi.com/random/joke", 
-                "dad-jokes.p.rapidapi.com", 
-                "f0a385fef6msh13af9fbe04c1966p14a39fjsna254a00a0ead");
-        String joke = apiReq.getNumReq(1);
-        
-        JokeCard card = new JokeCard(joke, apiReq);
-        add(card);
-    }
-    
-    public void dadJokes() {
-        System.out.println("Hi");
-        
-        ApiRequester apiReq = new ApiRequester("https://jokes-by-api-ninjas.p.rapidapi.com/v1/jokes", 
-                "jokes-by-api-ninjas.p.rapidapi.com", 
-                "f0a385fef6msh13af9fbe04c1966p14a39fjsna254a00a0ead");
-        String joke = apiReq.getNumReq(1);
-        
-        JokeCard card = new JokeCard(joke, apiReq);
-        add(card);
-    }
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -99,12 +122,15 @@ public class MainGui extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                mainGui = new MainGui();
-                mainGui.setVisible(true);
+               new MainGui().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane Navbar;
+    private sofishtication.GUI.JokesPanel jokesPanel1;
+    private sofishtication.GUI.MyJokesPanel myJokesPanel1;
+    private sofishtication.GUI.Profile profile1;
     // End of variables declaration//GEN-END:variables
 }
