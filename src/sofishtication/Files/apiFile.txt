@@ -1,0 +1,3 @@
+name~creator~url~host~key
+DadJokes~API-Ninjas~https://dad-jokes-by-api-ninjas.p.rapidapi.com/v1/dadjokes~dad-jokes-by-api-ninjas.p.rapidapi.com~f0a385fef6msh13af9fbe04c1966p14a39fjsna254a00a0ead
+ChuckNorris~Matchilling~https://matchilling-chuck-norris-jokes-v1.p.rapidapi.com/jokes/random~matchilling-chuck-norris-jokes-v1.p.rapidapi.com~f0a385fef6msh13af9fbe04c1966p14a39fjsna254a00a0ead
