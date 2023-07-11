@@ -16,7 +16,7 @@
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
   <SubComponents>
-    <Component class="sofishtication.GUI.FeedPanel" name="feedPanel1">
+    <Component class="sofishtication.Views.FeedPanel" name="feedPanel1">
       <Events>
         <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="feedPanel1MousePressed"/>
       </Events>
@@ -26,7 +26,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="sofishtication.GUI.JokeCard" name="jokeCard1">
+    <Component class="sofishtication.Views.JokeCard" name="jokeCard1">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
           <CardConstraints cardName="card"/>

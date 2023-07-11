@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package sofishtication.GUI;
+package sofishtication.Views;
 
 /**
  *
  * @author user-pc
  */
-public class MyJokesPanel extends javax.swing.JPanel {
+public class Profile extends javax.swing.JPanel {
 
     /**
-     * Creates new form MyJokesPanel
+     * Creates new form Profile
      */
-    public MyJokesPanel() {
+    public Profile() {
         initComponents();
     }
 

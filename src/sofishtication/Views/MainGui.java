@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package sofishtication.GUI;
+package sofishtication.Views;
 
 import javax.swing.BoxLayout;
 
@@ -28,9 +28,9 @@ public class MainGui extends javax.swing.JFrame {
     private void initComponents() {
 
         Navbar = new javax.swing.JTabbedPane();
-        jokesPanel1 = new sofishtication.GUI.JokesPanel();
-        myJokesPanel1 = new sofishtication.GUI.MyJokesPanel();
-        profile1 = new sofishtication.GUI.Profile();
+        jokesPanel1 = new sofishtication.Views.JokesPanel();
+        myJokesPanel1 = new sofishtication.Views.MyJokesPanel();
+        profile1 = new sofishtication.Views.Profile();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,8 +127,8 @@ public class MainGui extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane Navbar;
-    private sofishtication.GUI.JokesPanel jokesPanel1;
-    private sofishtication.GUI.MyJokesPanel myJokesPanel1;
-    private sofishtication.GUI.Profile profile1;
+    private sofishtication.Views.JokesPanel jokesPanel1;
+    private sofishtication.Views.MyJokesPanel myJokesPanel1;
+    private sofishtication.Views.Profile profile1;
     // End of variables declaration//GEN-END:variables
 }

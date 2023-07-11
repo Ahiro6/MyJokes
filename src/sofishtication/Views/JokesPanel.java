@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package sofishtication.GUI;
+package sofishtication.Views;
 
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -29,8 +29,8 @@ public class JokesPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        feedPanel1 = new sofishtication.GUI.FeedPanel();
-        jokeCard1 = new sofishtication.GUI.JokeCard();
+        feedPanel1 = new sofishtication.Views.FeedPanel();
+        jokeCard1 = new sofishtication.Views.JokeCard();
 
         setLayout(new java.awt.CardLayout());
 
@@ -62,7 +62,7 @@ public class JokesPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private sofishtication.GUI.FeedPanel feedPanel1;
-    private sofishtication.GUI.JokeCard jokeCard1;
+    private sofishtication.Views.FeedPanel feedPanel1;
+    private sofishtication.Views.JokeCard jokeCard1;
     // End of variables declaration//GEN-END:variables
 }
