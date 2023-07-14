@@ -19,6 +19,7 @@ public class FeedPanel extends javax.swing.JPanel {
     public FeedPanel() {
         initComponents();
         apiReqs = ApiLoader.readApi("apiFile.txt");
+        profilesSetup();
     }
 
 
@@ -33,7 +34,7 @@ public class FeedPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        profilesPanel = new javax.swing.JPanel();
 
         addHierarchyListener(new java.awt.event.HierarchyListener() {
             public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
@@ -64,25 +65,25 @@ public class FeedPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
         jLabel1.setText("Jokes");
 
-        jPanel1.addHierarchyListener(new java.awt.event.HierarchyListener() {
+        profilesPanel.addHierarchyListener(new java.awt.event.HierarchyListener() {
             public void hierarchyChanged(java.awt.event.HierarchyEvent evt) {
-                jPanel1HierarchyChanged(evt);
+                profilesPanelHierarchyChanged(evt);
             }
         });
-        jPanel1.addFocusListener(new java.awt.event.FocusAdapter() {
+        profilesPanel.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jPanel1FocusGained(evt);
+                profilesPanelFocusGained(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout profilesPanelLayout = new javax.swing.GroupLayout(profilesPanel);
+        profilesPanel.setLayout(profilesPanelLayout);
+        profilesPanelLayout.setHorizontalGroup(
+            profilesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 400, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        profilesPanelLayout.setVerticalGroup(
+            profilesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 261, Short.MAX_VALUE)
         );
 
@@ -94,7 +95,7 @@ public class FeedPanel extends javax.swing.JPanel {
                 .addGap(150, 150, 150)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(profilesPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,17 +103,17 @@ public class FeedPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(2, 2, 2)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(profilesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPanel1HierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_jPanel1HierarchyChanged
+    private void profilesPanelHierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_profilesPanelHierarchyChanged
         
-    }//GEN-LAST:event_jPanel1HierarchyChanged
+    }//GEN-LAST:event_profilesPanelHierarchyChanged
 
-    private void jPanel1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel1FocusGained
+    private void profilesPanelFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_profilesPanelFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel1FocusGained
+    }//GEN-LAST:event_profilesPanelFocusGained
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
 
@@ -131,7 +132,7 @@ public class FeedPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_formHierarchyChanged
 
     private void formPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_formPropertyChange
-        profilesSetup();
+
     }//GEN-LAST:event_formPropertyChange
 
     public void profilesSetup() {
@@ -150,6 +151,6 @@ public class FeedPanel extends javax.swing.JPanel {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel profilesPanel;
     // End of variables declaration//GEN-END:variables
 }

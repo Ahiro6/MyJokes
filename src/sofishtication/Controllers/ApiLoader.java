@@ -21,7 +21,7 @@ import sofishtication.Models.ApiRequester;
 public class ApiLoader {
     
     String fileName;
-    static String path = ".\\src\\sofishtication\\apiConnector\\";
+    static String path = ".\\src\\sofishtication\\Files\\";
     
     public ApiLoader(String fileName) {
         this.fileName = fileName;

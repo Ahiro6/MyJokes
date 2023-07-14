@@ -5,6 +5,7 @@
 package sofishtication.Views;
 
 import javax.swing.BoxLayout;
+import sofishtication.Controllers.SQLController;
 
 
 /**
@@ -12,7 +13,7 @@ import javax.swing.BoxLayout;
  * @author user-pc
  */
 public class MainGui extends javax.swing.JFrame {
-
+    static SQLController sqlCon = new SQLController();
     
     public MainGui() {
         initComponents();
@@ -30,7 +31,7 @@ public class MainGui extends javax.swing.JFrame {
         Navbar = new javax.swing.JTabbedPane();
         jokesPanel1 = new sofishtication.Views.JokesPanel();
         myJokesPanel1 = new sofishtication.Views.MyJokesPanel();
-        profile1 = new sofishtication.Views.Profile();
+        userPanel2 = new sofishtication.Views.UserPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,27 +46,15 @@ public class MainGui extends javax.swing.JFrame {
         myJokesPanel1.setLayout(myJokesPanel1Layout);
         myJokesPanel1Layout.setHorizontalGroup(
             myJokesPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 437, Short.MAX_VALUE)
+            .addGap(0, 450, Short.MAX_VALUE)
         );
         myJokesPanel1Layout.setVerticalGroup(
             myJokesPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 309, Short.MAX_VALUE)
+            .addGap(0, 324, Short.MAX_VALUE)
         );
 
         Navbar.addTab("MyJokes", myJokesPanel1);
-
-        javax.swing.GroupLayout profile1Layout = new javax.swing.GroupLayout(profile1);
-        profile1.setLayout(profile1Layout);
-        profile1Layout.setHorizontalGroup(
-            profile1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 437, Short.MAX_VALUE)
-        );
-        profile1Layout.setVerticalGroup(
-            profile1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 309, Short.MAX_VALUE)
-        );
-
-        Navbar.addTab("Profile", profile1);
+        Navbar.addTab("Profile", userPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,10 +105,11 @@ public class MainGui extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        sqlCon.connect();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                new MainGui().setVisible(true);
             }
         });
@@ -129,6 +119,6 @@ public class MainGui extends javax.swing.JFrame {
     private javax.swing.JTabbedPane Navbar;
     private sofishtication.Views.JokesPanel jokesPanel1;
     private sofishtication.Views.MyJokesPanel myJokesPanel1;
-    private sofishtication.Views.Profile profile1;
+    private sofishtication.Views.UserPanel userPanel2;
     // End of variables declaration//GEN-END:variables
 }
