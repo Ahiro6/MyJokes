@@ -5,6 +5,8 @@
 package sofishtication.Views;
 
 import java.awt.CardLayout;
+import sofishtication.Controllers.SQLController;
+import sofishtication.Models.UserModel;
 
 /**
  *
@@ -35,12 +37,14 @@ public class Login extends javax.swing.JPanel {
         usernameField2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         signupEmail = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         emailField = new javax.swing.JTextField();
+        firstNameField = new javax.swing.JTextField();
+        lastNameField = new javax.swing.JTextField();
         usernameField = new javax.swing.JTextField();
         passwordField = new javax.swing.JTextField();
         confirmField = new javax.swing.JTextField();
         signupBtn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         signupPageBtn = new javax.swing.JButton();
         loginPageBtn = new javax.swing.JButton();
 
@@ -64,7 +68,7 @@ public class Login extends javax.swing.JPanel {
         loginPanelLayout.setHorizontalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
-                .addContainerGap(58, Short.MAX_VALUE)
+                .addContainerGap(59, Short.MAX_VALUE)
                 .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -87,12 +91,30 @@ public class Login extends javax.swing.JPanel {
                 .addComponent(passwordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loginBtn)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         detailsPanel.add(loginPanel, "login");
 
+        signupEmail.setMaximumSize(new java.awt.Dimension(32767, 40000));
+
+        jLabel1.setText("Welcome!");
+
         emailField.setText("Email");
+
+        firstNameField.setText("First Name");
+        firstNameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                firstNameFieldActionPerformed(evt);
+            }
+        });
+
+        lastNameField.setText("Last Name");
+        lastNameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lastNameFieldActionPerformed(evt);
+            }
+        });
 
         usernameField.setText("Username");
 
@@ -107,28 +129,35 @@ public class Login extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("Welcome!");
-
         javax.swing.GroupLayout signupEmailLayout = new javax.swing.GroupLayout(signupEmail);
         signupEmail.setLayout(signupEmailLayout);
         signupEmailLayout.setHorizontalGroup(
             signupEmailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(signupEmailLayout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(signupBtn)
-                .addGap(0, 61, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signupEmailLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(70, 70, 70))
-            .addGroup(signupEmailLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(signupEmailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(confirmField, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                    .addComponent(emailField)
-                    .addComponent(usernameField)
-                    .addComponent(passwordField))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(signupEmailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(signupEmailLayout.createSequentialGroup()
+                        .addGroup(signupEmailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lastNameField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(firstNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                            .addComponent(emailField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(passwordField, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addContainerGap(10, Short.MAX_VALUE))
+                    .addGroup(signupEmailLayout.createSequentialGroup()
+                        .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(signupEmailLayout.createSequentialGroup()
+                .addGroup(signupEmailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(signupEmailLayout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addComponent(jLabel1))
+                    .addGroup(signupEmailLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(confirmField, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(signupEmailLayout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(signupBtn)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         signupEmailLayout.setVerticalGroup(
             signupEmailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,14 +167,18 @@ public class Login extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(confirmField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(signupBtn)
-                .addGap(189, 189, 189))
+                .addGap(29, 29, 29))
         );
 
         detailsPanel.add(signupEmail, "signup");
@@ -168,27 +201,27 @@ public class Login extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
-                .addComponent(detailsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(signupPageBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(loginPageBtn)
+                .addContainerGap()
+                .addComponent(detailsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(signupPageBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(loginPageBtn)
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(detailsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addComponent(detailsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(signupPageBtn)
                     .addComponent(loginPageBtn))
-                .addGap(34, 34, 34))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -205,11 +238,27 @@ public class Login extends javax.swing.JPanel {
         String password = passwordField2.getText();
     }//GEN-LAST:event_loginBtnActionPerformed
 
+    private void lastNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastNameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lastNameFieldActionPerformed
+
+    private void firstNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_firstNameFieldActionPerformed
+
     private void signupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupBtnActionPerformed
         String username = usernameField.getText();
+        String firstName = firstNameField.getText();
+        String lastName = lastNameField.getText();
         String email = emailField.getText();
         String password = passwordField.getText();
         String confirm = confirmField.getText();
+        
+        UserModel user = new UserModel(email, password, confirm, username, firstName, lastName);
+        SQLController sqlCon = new SQLController();
+        if(sqlCon.connect()) {
+            sqlCon.postUserQuery(user);
+        }
     }//GEN-LAST:event_signupBtnActionPerformed
 
     private void setCard(String card) {
@@ -222,8 +271,10 @@ public class Login extends javax.swing.JPanel {
     private javax.swing.JTextField confirmField;
     private javax.swing.JPanel detailsPanel;
     private javax.swing.JTextField emailField;
+    private javax.swing.JTextField firstNameField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField lastNameField;
     private javax.swing.JButton loginBtn;
     private javax.swing.JButton loginPageBtn;
     private javax.swing.JPanel loginPanel;

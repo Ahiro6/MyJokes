@@ -28,55 +28,55 @@ public class MainGui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Navbar = new javax.swing.JTabbedPane();
+        Profile = new javax.swing.JTabbedPane();
         jokesPanel1 = new sofishtication.Views.JokesPanel();
         myJokesPanel1 = new sofishtication.Views.MyJokesPanel();
-        userPanel2 = new sofishtication.Views.UserPanel();
+        userPanel1 = new sofishtication.Views.UserPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Navbar.addChangeListener(new javax.swing.event.ChangeListener() {
+        Profile.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                NavbarStateChanged(evt);
+                ProfileStateChanged(evt);
             }
         });
-        Navbar.addTab("Home", jokesPanel1);
+        Profile.addTab("Home", jokesPanel1);
 
         javax.swing.GroupLayout myJokesPanel1Layout = new javax.swing.GroupLayout(myJokesPanel1);
         myJokesPanel1.setLayout(myJokesPanel1Layout);
         myJokesPanel1Layout.setHorizontalGroup(
             myJokesPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGap(0, 462, Short.MAX_VALUE)
         );
         myJokesPanel1Layout.setVerticalGroup(
             myJokesPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 324, Short.MAX_VALUE)
+            .addGap(0, 401, Short.MAX_VALUE)
         );
 
-        Navbar.addTab("MyJokes", myJokesPanel1);
-        Navbar.addTab("Profile", userPanel2);
+        Profile.addTab("MyJokes", myJokesPanel1);
+        Profile.addTab("Profile", userPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Navbar, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(Profile, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Navbar)
+            .addComponent(Profile, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NavbarStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_NavbarStateChanged
-        if(Navbar.getSelectedIndex() == 0) {
+    private void ProfileStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ProfileStateChanged
+        if(Profile.getSelectedIndex() == 0) {
             //FeedPanel feed = (FeedPanel) 
         }
         
       
-    }//GEN-LAST:event_NavbarStateChanged
+    }//GEN-LAST:event_ProfileStateChanged
 
     /**
      * @param args the command line arguments
@@ -105,7 +105,7 @@ public class MainGui extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        sqlCon.connect();
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -116,9 +116,9 @@ public class MainGui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane Navbar;
+    private javax.swing.JTabbedPane Profile;
     private sofishtication.Views.JokesPanel jokesPanel1;
     private sofishtication.Views.MyJokesPanel myJokesPanel1;
-    private sofishtication.Views.UserPanel userPanel2;
+    private sofishtication.Views.UserPanel userPanel1;
     // End of variables declaration//GEN-END:variables
 }
