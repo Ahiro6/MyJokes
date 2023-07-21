@@ -12,17 +12,42 @@ import sofishtication.Models.UserModel;
  */
 public class StateController {
     
-    UserModel userModel;
+    static UserModel userModel;
+    static SQLController sqlCon = new SQLController();;
 
-    public StateController() {
+    public static void initiate() {
+        if(sqlCon.connect()) {
+            System.out.println("Success");
+        }
     }
 
-    public void setUserModel(UserModel userModel) {
-        this.userModel = userModel;
+    public static void setUserModel(UserModel userModel) {
+        StateController.userModel = userModel;
     }
 
     public UserModel getUserModel() {
         return userModel;
+    }
+    
+    public static UserModel login(UserModel user) {
+        if(sqlCon.getConnection()) {
+            user = sqlCon.getUserQuery(user);
+        }
+        
+        return user;
+    }
+    
+    public static UserModel signup(UserModel user) {
+        if(sqlCon.getConnection()) {
+            user = sqlCon.postUserQuery(user);
+        }
+        
+        return user;
+    }
+    
+    public static void killState() {
+        sqlCon.disconnect();
+        setUserModel(null);
     }
     
     

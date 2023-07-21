@@ -6,6 +6,7 @@ package sofishtication.Views;
 
 import javax.swing.BoxLayout;
 import sofishtication.Controllers.SQLController;
+import sofishtication.Controllers.StateController;
 
 
 /**
@@ -29,7 +30,7 @@ public class MainGui extends javax.swing.JFrame {
     private void initComponents() {
 
         Profile = new javax.swing.JTabbedPane();
-        jokesPanel1 = new sofishtication.Views.JokesPanel();
+        Home = new sofishtication.Views.JokesPanel();
         myJokesPanel1 = new sofishtication.Views.MyJokesPanel();
         userPanel1 = new sofishtication.Views.UserPanel();
 
@@ -40,17 +41,17 @@ public class MainGui extends javax.swing.JFrame {
                 ProfileStateChanged(evt);
             }
         });
-        Profile.addTab("Home", jokesPanel1);
+        Profile.addTab("Home", Home);
 
         javax.swing.GroupLayout myJokesPanel1Layout = new javax.swing.GroupLayout(myJokesPanel1);
         myJokesPanel1.setLayout(myJokesPanel1Layout);
         myJokesPanel1Layout.setHorizontalGroup(
             myJokesPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 462, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         myJokesPanel1Layout.setVerticalGroup(
             myJokesPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 401, Short.MAX_VALUE)
+            .addGap(0, 349, Short.MAX_VALUE)
         );
 
         Profile.addTab("MyJokes", myJokesPanel1);
@@ -64,7 +65,7 @@ public class MainGui extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Profile, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
+            .addComponent(Profile)
         );
 
         pack();
@@ -72,7 +73,7 @@ public class MainGui extends javax.swing.JFrame {
 
     private void ProfileStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ProfileStateChanged
         if(Profile.getSelectedIndex() == 0) {
-            //FeedPanel feed = (FeedPanel) 
+            //FeedPanel feedPanel = JokesPanel.
         }
         
       
@@ -105,19 +106,19 @@ public class MainGui extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+        //StateController.initiate();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+               
                new MainGui().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private sofishtication.Views.JokesPanel Home;
     private javax.swing.JTabbedPane Profile;
-    private sofishtication.Views.JokesPanel jokesPanel1;
     private sofishtication.Views.MyJokesPanel myJokesPanel1;
     private sofishtication.Views.UserPanel userPanel1;
     // End of variables declaration//GEN-END:variables

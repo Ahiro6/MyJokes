@@ -84,7 +84,7 @@ public class FeedPanel extends javax.swing.JPanel {
         );
         profilesPanelLayout.setVerticalGroup(
             profilesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 261, Short.MAX_VALUE)
+            .addGap(0, 277, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -128,7 +128,7 @@ public class FeedPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_formMouseEntered
 
     private void formHierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_formHierarchyChanged
-        profilesSetup();
+        profilesVisualise();
     }//GEN-LAST:event_formHierarchyChanged
 
     private void formPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_formPropertyChange
@@ -145,10 +145,15 @@ public class FeedPanel extends javax.swing.JPanel {
             profile.setBounds(bounds);
 
             jokeProfiles.add(profile);
-
-            this.add(profile);
         }
     }
+    public void profilesVisualise() {
+        for (int i = 0; i < apiReqs.size(); i++) {
+            this.add(jokeProfiles.get(i));
+        }
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel profilesPanel;

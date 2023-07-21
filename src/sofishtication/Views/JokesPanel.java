@@ -29,23 +29,13 @@ public class JokesPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        feedPanel1 = new sofishtication.Views.FeedPanel();
+        feedPanel2 = new sofishtication.Views.FeedPanel();
         jokeCard1 = new sofishtication.Views.JokeCard();
 
         setLayout(new java.awt.CardLayout());
-
-        feedPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                feedPanel1MousePressed(evt);
-            }
-        });
-        add(feedPanel1, "feed");
+        add(feedPanel2, "feed");
         add(jokeCard1, "card");
     }// </editor-fold>//GEN-END:initComponents
-
-    private void feedPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_feedPanel1MousePressed
-
-    }//GEN-LAST:event_feedPanel1MousePressed
     private void setCard(String card) {
         CardLayout cardLayout = (CardLayout) this.getLayout();
         cardLayout.show(this, card);
@@ -61,8 +51,18 @@ public class JokesPanel extends javax.swing.JPanel {
         setCard("feed");
     }
 
+    public FeedPanel getFeedPanel2() {
+        return feedPanel2;
+    }
+
+    public JokeCard getJokeCard1() {
+        return jokeCard1;
+    }
+    
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private sofishtication.Views.FeedPanel feedPanel1;
+    private sofishtication.Views.FeedPanel feedPanel2;
     private sofishtication.Views.JokeCard jokeCard1;
     // End of variables declaration//GEN-END:variables
 }

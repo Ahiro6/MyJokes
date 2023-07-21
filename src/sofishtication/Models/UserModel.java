@@ -12,13 +12,14 @@ import java.util.UUID;
 
 
 public class UserModel {
+    
     private String email;
     private String password;
     private String username;
-    private String id;
+    private UUID id;
     private String firstName;
     private String lastName;
-
+    
     public UserModel(String email, String password, String confirm, String username, String firstName, String lastName) {
         if(password.equals(confirm)) {
             
@@ -31,12 +32,30 @@ public class UserModel {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
+    public UserModel(UUID id, String email, String password, String username,String firstName, String lastName) {
+        this.email = email;
+        this.password = password;
+        this.username = username;
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public UserModel() {
+    }
+
+    public UserModel(String password, String username) {
+        this.password = password;
+        this.username = username;
+    }
     
-    private String createId() {
+    
+    
+    private UUID createId() {
         UUID uuid = UUID.randomUUID();
-        String ret = uuid.toString();
         
-        return ret;
+        return uuid;
     }
     
     public String getEmail() {
@@ -51,7 +70,7 @@ public class UserModel {
         return password;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -63,8 +82,6 @@ public class UserModel {
         return lastName;
     }
     
-    
-
     @Override
     public String toString() {
         return "UserModel{" + "email=" + email + ", password=" + password + ", username=" + username + ", id=" + id + '}';
