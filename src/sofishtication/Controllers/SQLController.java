@@ -6,8 +6,11 @@ package sofishtication.Controllers;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import sofishtication.Models.JokeModel;
+import sofishtication.Models.ProfileModel;
 import sofishtication.Models.UserModel;
 
 /**
@@ -92,6 +95,76 @@ public class SQLController {
         return results;
     }
 
+    public ProfileModel getProfileQuery(UUID id) {
+        ProfileModel profile = null;
+        try {
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM " + tableName);
+            while (rs.next()) {
+                System.out.println(rs.getStatement());
+            }
+            rs.close();
+            st.close();
+
+        } catch (java.sql.SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return profile;
+    }
+
+    public ArrayList<String> getJokeQuery() {
+        ArrayList<String> results = new ArrayList<>();
+        try {
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM " + tableName);
+            while (rs.next()) {
+                System.out.println(rs.getInt(1));
+                results.add(rs.getString(1));
+            }
+            rs.close();
+            st.close();
+
+        } catch (java.sql.SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return results;
+    }
+
+    public JokeModel postJokeQuery(JokeModel joke) {
+        try {
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("INSERT INTO " + "Jokes"
+                    + "VALUES (" + joke.toString() + ");");
+
+            rs.close();
+            st.close();
+
+        } catch (java.sql.SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return joke;
+    }
+
+    public ProfileModel postProfileQuery(ProfileModel profile, ArrayList<UUID> id) {
+
+        try {
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("INSERT INTO " + "Profiles" 
+                    + "VALUES (" + profile.toString()+ "," + id.toString() +");");
+
+            rs.close();
+            st.close();
+
+        } catch (java.sql.SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return profile;
+    }
+
     public UserModel getUserQuery(UserModel user) {
         try {
             Statement st = db.createStatement();
@@ -142,17 +215,15 @@ public class SQLController {
 
         return true;
     }
-    //TODO: adpat jokes table
+
     public boolean createJokesTable() {
         try {
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("CREATE TABLE " + "Users" + " ("
-                    + " Id varchar(255),"
-                    + " LastName varchar(255),"
-                    + " FirstName varchar255),"
-                    + " Username varchar(255),"
-                    + " Password varchar(255),"
-                    + " Email varchar(255)"
+            ResultSet rs = st.executeQuery("CREATE TABLE " + "Jokes" + " ("
+                    + " Id varchar,"
+                    + " UserId varchar,"
+                    + " ProfileId varchar,"
+                    + " Joke varchar"
                     + ");");
 
             return true;
@@ -161,18 +232,15 @@ public class SQLController {
         }
         return false;
     }
-    
-    //TODO: adpat profile table
+
     public boolean createProfileTable() {
         try {
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("CREATE TABLE " + "Users" + " ("
-                    + " Id varchar(255),"
-                    + " LastName varchar(255),"
-                    + " FirstName varchar255),"
-                    + " Username varchar(255),"
-                    + " Password varchar(255),"
-                    + " Email varchar(255)"
+            ResultSet rs = st.executeQuery("CREATE TABLE " + "Profiles" + " ("
+                    + " Id varchar,"
+                    + " UserId varchar,"
+                    + " Name varchar,"
+                    + " Jokes varchar array"
                     + ");");
 
             return true;
@@ -186,12 +254,12 @@ public class SQLController {
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("CREATE TABLE " + "Users" + " ("
-                    + " Id varchar(255),"
-                    + " LastName varchar(255),"
-                    + " FirstName varchar255),"
-                    + " Username varchar(255),"
-                    + " Password varchar(255),"
-                    + " Email varchar(255)"
+                    + " Id varchar,"
+                    + " LastName varchar,"
+                    + " FirstName varchar,"
+                    + " Username varchar,"
+                    + " Password varchar,"
+                    + " Email varchar"
                     + ");");
 
             return true;

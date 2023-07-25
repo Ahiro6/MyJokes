@@ -4,6 +4,10 @@
  */
 package sofishtication.Controllers;
 
+import java.util.ArrayList;
+import java.util.UUID;
+import sofishtication.Models.JokeModel;
+import sofishtication.Models.ProfileModel;
 import sofishtication.Models.UserModel;
 
 /**
@@ -11,12 +15,14 @@ import sofishtication.Models.UserModel;
  * @author user-pc
  */
 public class StateController {
-    
+
     static UserModel userModel;
-    static SQLController sqlCon = new SQLController();;
+    static SQLController sqlCon = new SQLController();
+
+    ;
 
     public static void initiate() {
-        if(sqlCon.connect()) {
+        if (sqlCon.connect()) {
             System.out.println("Success");
         }
     }
@@ -28,27 +34,49 @@ public class StateController {
     public UserModel getUserModel() {
         return userModel;
     }
-    
+
     public static UserModel login(UserModel user) {
-        if(sqlCon.getConnection()) {
+        if (sqlCon.getConnection()) {
             user = sqlCon.getUserQuery(user);
         }
-        
+
         return user;
     }
-    
+
     public static UserModel signup(UserModel user) {
-        if(sqlCon.getConnection()) {
+        if (sqlCon.getConnection()) {
             user = sqlCon.postUserQuery(user);
         }
-        
+
         return user;
     }
-    
+
+    public static ProfileModel getProfile(UUID id) {
+        ProfileModel profile = null;
+        if (sqlCon.getConnection()) {
+            profile = sqlCon.getProfileQuery(id);
+        }
+
+        return profile;
+    }
+
+    public static ProfileModel postProfile(ProfileModel profile) {
+        ArrayList<UUID> id = new ArrayList<>();
+        if (sqlCon.getConnection()) {
+            for(int i = 0; i<profile.getJokes().size(); i++) {
+                JokeModel joke = profile.getJokes().get(i);
+                joke = sqlCon.postJokeQuery(joke);
+                id.add(joke.getId());
+            }
+            sqlCon.postProfileQuery(profile, id);
+        }
+
+        return profile;
+    }
+
     public static void killState() {
         sqlCon.disconnect();
         setUserModel(null);
     }
-    
-    
+
 }

@@ -4,38 +4,55 @@
  */
 package sofishtication.Models;
 
+import java.util.UUID;
+
 /**
  *
  * @author adriaan.mostert
  */
 public class JokeModel {
-    private String joke;
-    private String id;
-    private String userId;
-    private String profileId;
 
-    public JokeModel(String joke, String id, String userId, String profileId) {
+    private String joke;
+    private UUID id;
+    private UUID userId;
+    private UUID profileId;
+
+    public JokeModel(String joke, UUID id, UUID userId, UUID profileId) {
         this.joke = joke;
         this.id = id;
         this.userId = userId;
         this.profileId = profileId;
     }
 
+    public JokeModel(String joke, UUID userId, UUID profileId) {
+        this.joke = joke;
+        this.userId = userId;
+        this.profileId = profileId;
+        this.id = createId();
+    }
+    
+    
+
+    private UUID createId() {
+        UUID uuid = UUID.randomUUID();
+
+        return uuid;
+    }
+
     public String getJoke() {
         return joke;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public String getUserId() {
+    public UUID getUserId() {
         return userId;
     }
 
-    public String getProfileId() {
+    public UUID getProfileId() {
         return profileId;
     }
-    
-    
+
 }
