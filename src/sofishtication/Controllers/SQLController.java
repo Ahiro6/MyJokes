@@ -95,33 +95,20 @@ public class SQLController {
         return results;
     }
 
-    public ProfileModel getProfileQuery(UUID id) {
-        ProfileModel profile = null;
-        try {
-            Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM " + tableName);
-            while (rs.next()) {
-                System.out.println(rs.getStatement());
-            }
-            rs.close();
-            st.close();
-
-        } catch (java.sql.SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
-        return profile;
-    }
-
-    public ArrayList<String> getJokeQuery() {
+    public ArrayList<String> getJokeQuery(UUID id) {
         ArrayList<String> results = new ArrayList<>();
         try {
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM " + tableName);
+            ResultSet rs = st.executeQuery("SELECT * FROM " + "Jokes " + 
+                    "WHERE " 
+                    + "Id="+id.toString() 
+                    + ";");
+            
             while (rs.next()) {
                 System.out.println(rs.getInt(1));
                 results.add(rs.getString(1));
             }
+            
             rs.close();
             st.close();
 
@@ -136,7 +123,8 @@ public class SQLController {
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("INSERT INTO " + "Jokes"
-                    + "VALUES (" + joke.toString() + ");");
+                    + "VALUES (" + joke.toString() 
+                    + ");");
 
             rs.close();
             st.close();
@@ -147,13 +135,37 @@ public class SQLController {
 
         return joke;
     }
+    
+        public ProfileModel getProfileQuery(UUID id) {
+        ProfileModel profile = null;
+        try {
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM " + "Profiles " + 
+                    "WHERE " 
+                    + "Id="+id.toString() 
+                    + ";");
+            
+            while (rs.next()) {
+                System.out.println(rs.getStatement());
+            }
+            
+            rs.close();
+            st.close();
+
+        } catch (java.sql.SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return profile;
+    }
 
     public ProfileModel postProfileQuery(ProfileModel profile, ArrayList<UUID> id) {
 
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("INSERT INTO " + "Profiles" 
-                    + "VALUES (" + profile.toString()+ "," + id.toString() +");");
+                    + "VALUES (" + profile.toString()+ "," + id.toString() 
+                    +");");
 
             rs.close();
             st.close();
@@ -168,7 +180,12 @@ public class SQLController {
     public UserModel getUserQuery(UserModel user) {
         try {
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM " + "Users");
+            ResultSet rs = st.executeQuery("SELECT * FROM " + "Users " + 
+                    "WHERE " 
+                    + "Username="+user.getUsername() + " AND " 
+                    + "Password="+user.getPassword() 
+                    + ";");
+            
             while (rs.next()) {
                 System.out.println(rs.getString(0));
                 //user = new UserModel(url, password, url, username, username, username)
@@ -192,7 +209,8 @@ public class SQLController {
                     + user.getFirstName() + ","
                     + user.getUsername() + ","
                     + user.getPassword() + ","
-                    + user.getEmail() + ");");
+                    + user.getEmail() 
+                    + ");");
 
             rs.close();
             st.close();
@@ -224,7 +242,7 @@ public class SQLController {
                     + " UserId varchar,"
                     + " ProfileId varchar,"
                     + " Joke varchar"
-                    + ");");
+                    + " );");
 
             return true;
         } catch (java.sql.SQLException ex) {
@@ -241,7 +259,7 @@ public class SQLController {
                     + " UserId varchar,"
                     + " Name varchar,"
                     + " Jokes varchar array"
-                    + ");");
+                    + " );");
 
             return true;
         } catch (java.sql.SQLException ex) {
@@ -260,7 +278,7 @@ public class SQLController {
                     + " Username varchar,"
                     + " Password varchar,"
                     + " Email varchar"
-                    + ");");
+                    + " );");
 
             return true;
         } catch (java.sql.SQLException ex) {
