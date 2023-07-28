@@ -55,20 +55,28 @@ public class StateController {
         ProfileModel profile = null;
         if (sqlCon.getConnection()) {
             profile = sqlCon.getProfileQuery(id);
+            for(int i = 0; i<profile.getJokeIds().size(); i++) {
+                UUID jokeId = profile.getJokeIds().get(i);
+                profile.addJoke(sqlCon.getJokeQuery(jokeId));
+            }
         }
 
         return profile;
     }
 
     public static ProfileModel postProfile(ProfileModel profile) {
-        ArrayList<UUID> id = new ArrayList<>();
+        ArrayList<UUID> ids = new ArrayList<>();
+        ArrayList<JokeModel> jokes = new ArrayList<>();
+        
         if (sqlCon.getConnection()) {
             for(int i = 0; i<profile.getJokes().size(); i++) {
                 JokeModel joke = profile.getJokes().get(i);
                 joke = sqlCon.postJokeQuery(joke);
-                id.add(joke.getId());
+                ids.add(joke.getId());
+                jokes.add(joke);
             }
-            sqlCon.postProfileQuery(profile, id);
+            profile = sqlCon.postProfileQuery(profile, ids);
+            profile.setJokes(jokes);
         }
 
         return profile;

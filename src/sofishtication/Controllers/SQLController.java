@@ -95,8 +95,8 @@ public class SQLController {
         return results;
     }
 
-    public ArrayList<String> getJokeQuery(UUID id) {
-        ArrayList<String> results = new ArrayList<>();
+    public JokeModel getJokeQuery(UUID id) {
+        JokeModel joke = null;
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM " + "Jokes " + 
@@ -105,8 +105,7 @@ public class SQLController {
                     + ";");
             
             while (rs.next()) {
-                System.out.println(rs.getInt(1));
-                results.add(rs.getString(1));
+                System.out.println(rs.getStatement().toString());
             }
             
             rs.close();
@@ -116,14 +115,17 @@ public class SQLController {
             System.out.println(e.getMessage());
         }
 
-        return results;
+        return joke;
     }
 
     public JokeModel postJokeQuery(JokeModel joke) {
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("INSERT INTO " + "Jokes"
-                    + "VALUES (" + joke.toString() 
+                    + " VALUES (" + joke.getId().toString() + ", "
+                    + joke.getUserId().toString() + ", "
+                    + joke.getProfileId().toString() + ", "
+                    + joke.getJoke()
                     + ");");
 
             rs.close();
@@ -146,7 +148,7 @@ public class SQLController {
                     + ";");
             
             while (rs.next()) {
-                System.out.println(rs.getStatement());
+                System.out.println(rs.getStatement().toString());
             }
             
             rs.close();
@@ -164,7 +166,10 @@ public class SQLController {
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("INSERT INTO " + "Profiles" 
-                    + "VALUES (" + profile.toString()+ "," + id.toString() 
+                    + "VALUES (" + profile.getId().toString() + ", "
+                    + profile.getUserId().toString() + ", "
+                    + profile.getName() + ", "
+                    + id.toArray()
                     +");");
 
             rs.close();
@@ -204,11 +209,11 @@ public class SQLController {
         try {
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("INSERT INTO " + "Users"
-                    + " VALUES (" + user.getId().toString() + ","
-                    + user.getLastName() + ","
-                    + user.getFirstName() + ","
-                    + user.getUsername() + ","
-                    + user.getPassword() + ","
+                    + " VALUES (" + user.getId().toString() + ", "
+                    + user.getLastName() + ", "
+                    + user.getFirstName() + ", "
+                    + user.getUsername() + ", "
+                    + user.getPassword() + ", "
                     + user.getEmail() 
                     + ");");
 
@@ -258,7 +263,7 @@ public class SQLController {
                     + " Id varchar,"
                     + " UserId varchar,"
                     + " Name varchar,"
-                    + " Jokes varchar array"
+                    + " JokeIds varchar array"
                     + " );");
 
             return true;

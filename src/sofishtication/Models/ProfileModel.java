@@ -17,12 +17,13 @@ public class ProfileModel {
     private UUID userId;
     private String name;
     private ArrayList<JokeModel> jokes;
+    private ArrayList<UUID> jokeIds;
 
-    public ProfileModel(UUID id, UUID userId, String name, ArrayList<JokeModel> jokes) {
+    public ProfileModel(UUID id, UUID userId, String name, ArrayList<UUID> jokeIds) {
         this.id = id;
         this.userId = userId;
         this.name = name;
-        this.jokes = jokes;
+        this.jokeIds = jokeIds;
     }
 
     public ProfileModel(UUID userId, String name, ArrayList<JokeModel> jokes) {
@@ -30,6 +31,10 @@ public class ProfileModel {
         this.userId = userId;
         this.name = name;
         this.jokes = jokes;
+    }
+    
+    public void addJoke(JokeModel joke) {
+        jokes.add(joke);
     }
     
     private UUID createId() {
@@ -54,4 +59,15 @@ public class ProfileModel {
         return jokes;
     }
 
+    public ArrayList<UUID> getJokeIds() {
+        return jokeIds;
+    }
+
+    public void setJokes(ArrayList<JokeModel> jokes) {
+        this.jokes = jokes;
+    }
+    
+    
+    
+    
 }

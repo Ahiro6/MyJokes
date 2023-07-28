@@ -19,6 +19,7 @@ public class UserModel {
     private UUID id;
     private String firstName;
     private String lastName;
+    private UserProfileModel profile;
     
     public UserModel(String email, String password, String confirm, String username, String firstName, String lastName) {
         if(password.equals(confirm)) {
@@ -80,6 +81,10 @@ public class UserModel {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public UserProfileModel getProfile() {
+        return profile;
     }
     
     @Override

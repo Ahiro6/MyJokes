@@ -31,8 +31,6 @@ public class JokeModel {
         this.id = createId();
     }
     
-    
-
     private UUID createId() {
         UUID uuid = UUID.randomUUID();
 
