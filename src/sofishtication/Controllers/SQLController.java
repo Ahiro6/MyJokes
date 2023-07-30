@@ -54,6 +54,7 @@ public class SQLController {
 
         try {
             this.db = DriverManager.getConnection(url, username, password);
+            System.out.println("success");
             return true;
 
         } catch (java.sql.SQLException e) {
