@@ -110,8 +110,8 @@ public class MainGui extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               StateController.initiate();
                new MainGui().setVisible(true);
+               //StateController.initiate();
             }
         });
     }

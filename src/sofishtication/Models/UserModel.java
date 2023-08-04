@@ -19,7 +19,7 @@ public class UserModel {
     private UUID id;
     private String firstName;
     private String lastName;
-    private UserProfileModel profile;
+    private UserProfileModel userProfile;
     
     public UserModel(String email, String password, String confirm, String username, String firstName, String lastName) {
         if(password.equals(confirm)) {
@@ -83,8 +83,12 @@ public class UserModel {
         return lastName;
     }
 
-    public UserProfileModel getProfile() {
-        return profile;
+    public UserProfileModel getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(UserProfileModel userProfile) {
+        this.userProfile = userProfile;
     }
     
     @Override

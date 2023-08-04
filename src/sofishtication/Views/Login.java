@@ -237,10 +237,14 @@ public class Login extends javax.swing.JPanel {
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         String username = usernameField2.getText();
         String password = passwordField2.getText();
-        
+
         UserModel user = new UserModel(password, username);
         System.out.println(user.toString());
-        StateController.login(user);
+        user = StateController.login(user);
+
+        if (user != null) {
+            loggedIn();
+        }
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void lastNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastNameFieldActionPerformed
@@ -261,8 +265,16 @@ public class Login extends javax.swing.JPanel {
 
         UserModel user = new UserModel(email, password, confirm, username, firstName, lastName);
         System.out.println(user.toString());
-        StateController.signup(user);
+        user = StateController.signup(user);
+
+        if (user != null) {
+            loggedIn();
+        }
     }//GEN-LAST:event_signupBtnActionPerformed
+    private void loggedIn() {
+        CardLayout cardLayout = (CardLayout) getParent().getParent().getLayout();
+        cardLayout.show(getParent().getParent(), "profile");
+    }
 
     private void setCard(String card) {
         CardLayout cardLayout = (CardLayout) detailsPanel.getLayout();

@@ -19,7 +19,6 @@ public class FeedPanel extends javax.swing.JPanel {
     public FeedPanel() {
         initComponents();
         apiReqs = ApiLoader.readApi("apiFile.txt");
-        profilesSetup();
     }
 
 
@@ -128,6 +127,7 @@ public class FeedPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_formMouseEntered
 
     private void formHierarchyChanged(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_formHierarchyChanged
+        profilesSetup();
         profilesVisualise();
     }//GEN-LAST:event_formHierarchyChanged
 
@@ -137,7 +137,7 @@ public class FeedPanel extends javax.swing.JPanel {
 
     public void profilesSetup() {
         for (int i = 0; i < apiReqs.size(); i++) {
-            Rectangle bounds = getBounds();
+            Rectangle bounds = profilesPanel.getBounds();
             bounds.setSize((int) bounds.getWidth(), 50);
             bounds.setLocation((int) bounds.getX(), (int) bounds.getY() + 30+50*i);
             
@@ -149,7 +149,7 @@ public class FeedPanel extends javax.swing.JPanel {
     }
     public void profilesVisualise() {
         for (int i = 0; i < apiReqs.size(); i++) {
-            this.add(jokeProfiles.get(i));
+            profilesPanel.add(jokeProfiles.get(i));
         }
     }
     

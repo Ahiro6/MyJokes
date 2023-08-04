@@ -28,7 +28,7 @@ public class UserPanel extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         login1 = new sofishtication.Views.Login();
-        profile2 = new sofishtication.Views.Profile();
+        profile1 = new sofishtication.Views.Profile();
 
         setLayout(new java.awt.CardLayout());
 
@@ -37,37 +37,25 @@ public class UserPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(60, 60, 60)
                 .addComponent(login1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(login1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 10, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(login1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        add(jPanel1, "card4");
-
-        javax.swing.GroupLayout profile2Layout = new javax.swing.GroupLayout(profile2);
-        profile2.setLayout(profile2Layout);
-        profile2Layout.setHorizontalGroup(
-            profile2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 304, Short.MAX_VALUE)
-        );
-        profile2Layout.setVerticalGroup(
-            profile2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 330, Short.MAX_VALUE)
-        );
-
-        add(profile2, "card3");
+        add(jPanel1, "login");
+        add(profile1, "profile");
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private sofishtication.Views.Login login1;
-    private sofishtication.Views.Profile profile2;
+    private sofishtication.Views.Profile profile1;
     // End of variables declaration//GEN-END:variables
 }

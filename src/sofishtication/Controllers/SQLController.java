@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import sofishtication.Models.JokeModel;
 import sofishtication.Models.ProfileModel;
 import sofishtication.Models.UserModel;
+import sofishtication.Models.UserProfileModel;
 
 /**
  *
@@ -99,15 +100,15 @@ public class SQLController {
         JokeModel joke = null;
         try {
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM " + "Jokes " + 
-                    "WHERE " 
-                    + "Id="+id.toString() 
+            ResultSet rs = st.executeQuery("SELECT * FROM " + "Jokes "
+                    + "WHERE "
+                    + "Id=" + id.toString()
                     + ";");
-            
+
             while (rs.next()) {
                 System.out.println(rs.getStatement().toString());
             }
-            
+
             rs.close();
             st.close();
 
@@ -133,24 +134,25 @@ public class SQLController {
 
         } catch (java.sql.SQLException e) {
             System.out.println(e.getMessage());
+            joke = null;
         }
 
         return joke;
     }
-    
-        public ProfileModel getProfileQuery(UUID id) {
+
+    public ProfileModel getProfileQuery(UUID id) {
         ProfileModel profile = null;
         try {
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM " + "Profiles " + 
-                    "WHERE " 
-                    + "Id="+id.toString() 
+            ResultSet rs = st.executeQuery("SELECT * FROM " + "Profiles "
+                    + "WHERE "
+                    + "Id=" + id.toString()
                     + ";");
-            
+
             while (rs.next()) {
                 System.out.println(rs.getStatement().toString());
             }
-            
+
             rs.close();
             st.close();
 
@@ -165,18 +167,19 @@ public class SQLController {
 
         try {
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("INSERT INTO " + "Profiles" 
+            ResultSet rs = st.executeQuery("INSERT INTO " + "Profiles"
                     + "VALUES (" + profile.getId().toString() + ", "
                     + profile.getUserId().toString() + ", "
                     + profile.getName() + ", "
                     + id.toArray()
-                    +");");
+                    + ");");
 
             rs.close();
             st.close();
 
         } catch (java.sql.SQLException e) {
             System.out.println(e.getMessage());
+            profile = null;
         }
 
         return profile;
@@ -185,12 +188,12 @@ public class SQLController {
     public UserModel getUserQuery(UserModel user) {
         try {
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM " + "Users " + 
-                    "WHERE " 
-                    + "Username="+user.getUsername() + " AND " 
-                    + "Password="+user.getPassword() 
+            ResultSet rs = st.executeQuery("SELECT * FROM " + "Users "
+                    + "WHERE "
+                    + "Username=" + user.getUsername() + " AND "
+                    + "Password=" + user.getPassword()
                     + ";");
-            
+
             while (rs.next()) {
                 System.out.println(rs.getString(0));
                 //user = new UserModel(url, password, url, username, username, username)
@@ -200,6 +203,7 @@ public class SQLController {
 
         } catch (java.sql.SQLException e) {
             System.out.println(e.getMessage());
+            user = null;
         }
 
         return user;
@@ -214,8 +218,32 @@ public class SQLController {
                     + user.getFirstName() + ", "
                     + user.getUsername() + ", "
                     + user.getPassword() + ", "
-                    + user.getEmail() 
+                    + user.getEmail()
                     + ");");
+
+            rs.close();
+            st.close();
+
+        } catch (java.sql.SQLException e) {
+            System.out.println(e.getMessage());
+            user = null;
+        }
+
+        return user;
+    }
+
+    public UserProfileModel getUserProfileQuery(UUID userId) {
+        UserProfileModel profile = null;
+        try {
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM " + "UserProfiles "
+                    + "WHERE "
+                    + "UserId=" + userId.toString()
+                    + ";");
+
+            while (rs.next()) {
+                System.out.println(rs.getStatement().toString());
+            }
 
             rs.close();
             st.close();
@@ -224,7 +252,28 @@ public class SQLController {
             System.out.println(e.getMessage());
         }
 
-        return user;
+        return profile;
+    }
+
+    public UserProfileModel postUserProfileQuery(UserProfileModel profile) {
+
+        try {
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("INSERT INTO " + "UserProfiles"
+                    + "VALUES (" + profile.getProfileId().toString() + ", "
+                    + profile.getImgUrl() + ", "
+                    + profile.getUserId().toString()
+                    + ");");
+
+            rs.close();
+            st.close();
+
+        } catch (java.sql.SQLException e) {
+            System.out.println(e.getMessage());
+            profile = null;
+        }
+
+        return profile;
     }
 
     public boolean disconnect() {
@@ -291,17 +340,33 @@ public class SQLController {
         }
         return false;
     }
-    
+
+    public boolean createUserProfileTable() {
+        try {
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("CREATE TABLE " + "UserProfiles" + " ("
+                    + " ProfileId varchar,"
+                    + " ImgUrl varchar,"
+                    + " UserId varchar,"
+                    + " );");
+
+            return true;
+        } catch (java.sql.SQLException ex) {
+            Logger.getLogger(SQLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
     public boolean dropTable(String name) {
         Statement st;
         try {
             st = db.createStatement();
-            ResultSet rs = st.executeQuery("DROP TABLE "+name+";");
+            ResultSet rs = st.executeQuery("DROP TABLE " + name + ";");
         } catch (SQLException ex) {
             Logger.getLogger(SQLController.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-          
+
         return true;
     }
 
