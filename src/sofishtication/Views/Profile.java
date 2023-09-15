@@ -4,6 +4,10 @@
  */
 package sofishtication.Views;
 
+import sofishtication.Controllers.StateController;
+import sofishtication.Models.UserModel;
+import sofishtication.Models.UserProfileModel;
+
 /**
  *
  * @author user-pc
@@ -13,6 +17,9 @@ public class Profile extends javax.swing.JPanel {
     /**
      * Creates new form Profile
      */
+    UserModel userModel;
+    UserProfileModel  profile;
+    
     public Profile() {
         initComponents();
         
@@ -30,6 +37,8 @@ public class Profile extends javax.swing.JPanel {
         infoPanel = new javax.swing.JPanel();
         imgPanel = new javax.swing.JPanel();
         nameLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        desField = new javax.swing.JTextPane();
         achievementsPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -47,6 +56,8 @@ public class Profile extends javax.swing.JPanel {
 
         nameLabel.setText("default name");
 
+        jScrollPane1.setViewportView(desField);
+
         javax.swing.GroupLayout infoPanelLayout = new javax.swing.GroupLayout(infoPanel);
         infoPanel.setLayout(infoPanelLayout);
         infoPanelLayout.setHorizontalGroup(
@@ -55,8 +66,12 @@ public class Profile extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(imgPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nameLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(infoPanelLayout.createSequentialGroup()
+                        .addComponent(nameLabel)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
         );
         infoPanelLayout.setVerticalGroup(
             infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -65,7 +80,8 @@ public class Profile extends javax.swing.JPanel {
                 .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(infoPanelLayout.createSequentialGroup()
                         .addComponent(nameLabel)
-                        .addGap(0, 120, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))
                     .addComponent(imgPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -124,14 +140,27 @@ public class Profile extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    private void onload() {
+        userModel = StateController.getUserModel();
+        if(userModel == null) {
+            
+        }
+        profile = StateController.getUserProfile();
+        
+        nameLabel.setText(userModel.getUsername());
+        desField.setText(profile.getDes());
+        
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel achievementsPanel;
+    private javax.swing.JTextPane desField;
     private javax.swing.JPanel imgPanel;
     private javax.swing.JPanel infoPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nameLabel;
     // End of variables declaration//GEN-END:variables
 }

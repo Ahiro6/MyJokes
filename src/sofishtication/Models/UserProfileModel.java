@@ -13,14 +13,16 @@ import java.util.UUID;
 public class UserProfileModel {
 
     UserModel user;
+    String des = "No description";
     String imgUrl = "https://w7.pngwing.com/pngs/981/645/png-transparent-default-profile-united-states-computer-icons-desktop-free-high-quality-person-icon-miscellaneous-silhouette-symbol-thumbnail.png";
 
     UUID profileId;
     UUID userId;
 
-    public UserProfileModel(UUID userId, String imgUrl, UUID profileId) {
+    public UserProfileModel(UUID userId, String imgUrl, String des, UUID profileId) {
         this.userId = userId;
         this.imgUrl = imgUrl;
+        this.des = des;
         this.profileId = profileId;
     }
 
@@ -50,6 +52,14 @@ public class UserProfileModel {
 
     public UUID getUserId() {
         return userId;
+    }
+
+    public String getDes() {
+        return des;
+    }
+
+    public void setDes(String des) {
+        this.des = des;
     }
 
     public void setUser(UserModel user) {

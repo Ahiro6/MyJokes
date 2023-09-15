@@ -29,55 +29,44 @@ public class MainGui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Profile = new javax.swing.JTabbedPane();
-        Home = new sofishtication.Views.JokesPanel();
-        myJokesPanel1 = new sofishtication.Views.MyJokesPanel();
+        navbar = new javax.swing.JTabbedPane();
+        homePanel1 = new sofishtication.Views.HomePanel();
+        leaderboardPanel1 = new sofishtication.Views.LeaderboardPanel();
         userPanel1 = new sofishtication.Views.UserPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Profile.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                ProfileStateChanged(evt);
-            }
-        });
-        Profile.addTab("Home", Home);
+        navbar.addTab("Home", homePanel1);
 
-        javax.swing.GroupLayout myJokesPanel1Layout = new javax.swing.GroupLayout(myJokesPanel1);
-        myJokesPanel1.setLayout(myJokesPanel1Layout);
-        myJokesPanel1Layout.setHorizontalGroup(
-            myJokesPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        javax.swing.GroupLayout leaderboardPanel1Layout = new javax.swing.GroupLayout(leaderboardPanel1);
+        leaderboardPanel1.setLayout(leaderboardPanel1Layout);
+        leaderboardPanel1Layout.setHorizontalGroup(
+            leaderboardPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 394, Short.MAX_VALUE)
         );
-        myJokesPanel1Layout.setVerticalGroup(
-            myJokesPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        leaderboardPanel1Layout.setVerticalGroup(
+            leaderboardPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 349, Short.MAX_VALUE)
         );
 
-        Profile.addTab("MyJokes", myJokesPanel1);
-        Profile.addTab("Profile", userPanel1);
+        navbar.addTab("Leaderboard", leaderboardPanel1);
+        navbar.addTab("Profile", userPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Profile, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(navbar, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Profile)
+            .addComponent(navbar)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void ProfileStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ProfileStateChanged
-        if(Profile.getSelectedIndex() == 0) {
-            //FeedPanel feedPanel = JokesPanel.
-        }
-        
-      
-    }//GEN-LAST:event_ProfileStateChanged
 
     /**
      * @param args the command line arguments
@@ -117,9 +106,9 @@ public class MainGui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private sofishtication.Views.JokesPanel Home;
-    private javax.swing.JTabbedPane Profile;
-    private sofishtication.Views.MyJokesPanel myJokesPanel1;
+    private sofishtication.Views.HomePanel homePanel1;
+    private sofishtication.Views.LeaderboardPanel leaderboardPanel1;
+    private javax.swing.JTabbedPane navbar;
     private sofishtication.Views.UserPanel userPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import sofishtication.Models.JokeModel;
-import sofishtication.Models.ProfileModel;
 import sofishtication.Models.UserModel;
 import sofishtication.Models.UserProfileModel;
 
@@ -94,95 +92,6 @@ public class SQLController {
         }
 
         return results;
-    }
-
-    public JokeModel getJokeQuery(UUID id) {
-        JokeModel joke = null;
-        try {
-            Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM " + "Jokes "
-                    + "WHERE "
-                    + "Id=" + id.toString()
-                    + ";");
-
-            while (rs.next()) {
-                System.out.println(rs.getStatement().toString());
-            }
-
-            rs.close();
-            st.close();
-
-        } catch (java.sql.SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
-        return joke;
-    }
-
-    public JokeModel postJokeQuery(JokeModel joke) {
-        try {
-            Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("INSERT INTO " + "Jokes"
-                    + " VALUES (" + joke.getId().toString() + ", "
-                    + joke.getUserId().toString() + ", "
-                    + joke.getProfileId().toString() + ", "
-                    + joke.getJoke()
-                    + ");");
-
-            rs.close();
-            st.close();
-
-        } catch (java.sql.SQLException e) {
-            System.out.println(e.getMessage());
-            joke = null;
-        }
-
-        return joke;
-    }
-
-    public ProfileModel getProfileQuery(UUID id) {
-        ProfileModel profile = null;
-        try {
-            Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM " + "Profiles "
-                    + "WHERE "
-                    + "Id=" + id.toString()
-                    + ";");
-
-            while (rs.next()) {
-                System.out.println(rs.getStatement().toString());
-            }
-
-            rs.close();
-            st.close();
-
-        } catch (java.sql.SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
-        return profile;
-    }
-
-    public ProfileModel postProfileQuery(ProfileModel profile, ArrayList<UUID> id) {
-
-        try {
-            Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("INSERT INTO " + "Profiles"
-                    + "VALUES (" + profile.getId().toString() + ", "
-                    + profile.getUserId().toString() + ", "
-                    + profile.getName() + ", "
-                    + id.toArray()
-                    + ");");
-
-            rs.close();
-            st.close();
-
-        } catch (java.sql.SQLException e) {
-            System.out.println(e.getMessage());
-            profile = null;
-        }
-
-        return profile;
     }
 
     public UserModel getUserQuery(UserModel user) {
@@ -286,40 +195,6 @@ public class SQLController {
         }
 
         return true;
-    }
-
-    public boolean createJokesTable() {
-        try {
-            Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("CREATE TABLE " + "Jokes" + " ("
-                    + " Id varchar,"
-                    + " UserId varchar,"
-                    + " ProfileId varchar,"
-                    + " Joke varchar"
-                    + " );");
-
-            return true;
-        } catch (java.sql.SQLException ex) {
-            Logger.getLogger(SQLController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
-    }
-
-    public boolean createProfileTable() {
-        try {
-            Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("CREATE TABLE " + "Profiles" + " ("
-                    + " Id varchar,"
-                    + " UserId varchar,"
-                    + " Name varchar,"
-                    + " JokeIds varchar array"
-                    + " );");
-
-            return true;
-        } catch (java.sql.SQLException ex) {
-            Logger.getLogger(SQLController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
     }
 
     public boolean createUserTable() {
